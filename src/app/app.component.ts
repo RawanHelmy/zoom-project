@@ -19,7 +19,7 @@ ZoomMtg.i18n.reload('en-US');
 })
 export class AppComponent implements OnInit {
   // setup your signature endpoint here: https://github.com/zoom/meetingsdk-sample-signature-node.js
-  signatureEndpoint = 'http://localhost:4000';
+  signatureEndpoint = 'https://eshtri-aqar.herokuapp.com';
   // This Sample App has been updated to use SDK App type credentials https://marketplace.zoom.us/docs/guides/build/sdk-app
   sdkKey = 'rXc2aQ0Np3ODpOANWp5gbC5B7nWy0WuZDlN1s';
   meetingNumber = '123456789';
@@ -32,10 +32,11 @@ export class AppComponent implements OnInit {
   // Meetings: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/meetings#join-registered
   // Webinars: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/webinars#join-registered
   registrantToken = '';
-
   constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document: any) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    document.getElementById('zmmtg-root').style.display = 'none';
+  }
 
   getSignature() {
     this.httpClient
